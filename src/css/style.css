@@ -20,6 +20,12 @@ body {
     line-height: 100%;
 }
 
+.score {
+    font-size: 24px;
+    display: flex;
+    gap: 20px;
+}
+
 .field {
     border: solid;
     border-radius: 10px;
@@ -29,6 +35,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    cursor: url('../img/cursor.png'), default;
 }
 
 .field-item {
@@ -37,13 +44,8 @@ body {
     height: 200px;
     border: solid;
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
 }
 
 .image {
-    height: 192px;
-    width: 192px;
-    background: url('/src/img/goblin.png');
-    background-size: contain;
+    background: center / contain no-repeat url('../img/goblin.png');
 }

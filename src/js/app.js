@@ -1,25 +1,45 @@
+import Action from "./Action";
+import Motion from "./Motion";
+import Score from "./Score";
+
+const field = document.querySelector(".field");
 const cells = document.querySelectorAll(".field-item");
-let current;
+const scoreField = document.querySelector(".score-value");
+let currentCells;
+let scoreValue = 0;
+let mistake = 0;
 
-function addImage(number) {
-  const image = document.createElement("div");
-  image.classList.add("image")
-  cells[number].classList.add("active");
-  cells[number].appendChild(image);
-}
-
-function deleteImage(number) {
-  cells[number].children[0].remove();
-}
+const action = new Action(field);
+const motion = new Motion(cells);
+const score = new Score(scoreField);
 
 setInterval(() => {
   let number = Math.floor(Math.random() * 4);
-  while (current === number) {
+  while (currentCells === number) {
     number = Math.floor(Math.random() * 4);
   }
-  if (current !== undefined) {
-    deleteImage(current);
+  if (currentCells !== undefined) {
+    motion.deleteImage(currentCells);
   }
-  addImage(number);
-  current = number;
+  motion.addImage(number);
+  currentCells = number;
+  console.log(mistake);
+  mistake++;
+  if (mistake > 5) {
+    alert("You lose(((");
+    scoreValue = 0;
+    mistake = 0;
+    score.write(scoreValue);
+  }
 }, 1000);
+
+function handler() {
+  scoreValue++;
+  score.write(scoreValue);
+  if (mistake > 0) {
+    mistake--;
+  }
+  motion.deleteImage(currentCells);
+}
+
+action.click(handler);
