@@ -1,0 +1,1 @@
+![CI](https://github.com/DmitriyNov/ahj-events-goblinGame/actions/workflows/web.yml/badge.svg)
