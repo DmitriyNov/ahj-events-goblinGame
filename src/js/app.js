@@ -23,7 +23,6 @@ setInterval(() => {
   }
   motion.addImage(number);
   currentCells = number;
-  console.log(mistake);
   mistake++;
   if (mistake > 5) {
     alert("You lose(((");
